@@ -46,7 +46,22 @@ def bubble_sort_plus(arg):
                 i =i + 1
         return arg
         
-help(bubble_sort)                  
-a=[21,14,18,25,9]
-b=bubble_sort_plus(a)
-print("b=",b)
+def cocktail_sort(arg):
+    
+    left=0
+    right=len(arg)-1
+    while left<=right:
+        for i in range(left,right,+1):
+            if arg[i]>arg[i+1]:
+                arg[i],arg[i+1] = arg[i+1],arg[i]
+        right-=1
+        for i in range(right,left,-1):
+            if arg[i-1]>arg[i]:
+                arg[i-1],arg[i] = arg[i],arg[i-1]
+        left+=1
+    return arg
+
+a=[3,1,5,8,1,0,4,6,6,7]
+b=cocktail_sort(a)
+print(b)
+    
