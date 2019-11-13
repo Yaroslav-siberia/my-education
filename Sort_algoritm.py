@@ -61,7 +61,53 @@ def cocktail_sort(arg):
         left+=1
     return arg
 
+
+def quicksort(arg):
+    if len(arg)<=1:
+        return arg
+    else:
+        #choice support element
+        support=arg[len(arg)-1]
+        #import random
+        #support=random.choice(arg)
+        low=[]
+        medium=[]
+        hight=[]
+        for n in arg:
+            if n<support:
+                low.append(n)
+            elif n==support:
+                medium.append(n)
+            else:
+                hight.append(n)
+        return quicksort(low)+medium+quicksort(hight)
+
+def insert_sort(arg):
+    for j in range(1,len(arg)):
+        aim= arg[j]
+        i=j-1
+        while (i>=0 and arg[i]>aim):
+            arg[i+1]=arg[i]
+            i=i-1
+        arg[i+1]=aim
+    return arg
+    
+def gnome_sort(arg):
+    i=1
+    j=2
+    while i < len(arg):
+        if arg[i]>arg[i-1]:
+            i=j
+            j+=1
+        else:
+            arg[i-1],arg[i]=arg[i],arg[i-1]
+            i-=1
+            if i==0:
+                i=j
+                j+=1
+    return arg
+     
 a=[3,1,5,8,1,0,4,6,6,7]
-b=cocktail_sort(a)
+b=gnome_sort(a)
 print(b)
     
